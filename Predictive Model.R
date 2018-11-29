@@ -24,11 +24,10 @@ Passenger_Count <- subset(Data, pickup_zip == zip)
 Passenger_Count <- Passenger_Count$passenger_count
 Passenger_Count <- as.numeric(Passenger_Count)
 
-
+  Zip_Data =  Data[ which(Data$pickup_zip == zip)]
 
 
 n = length(Passenger_Count)
-n = 24 * 20
 #Toy Data
 Pass =  Passenger_Count[1:n]
 Pass = as.data.frame(Pass)
@@ -52,13 +51,17 @@ ggplot() +
 
 #Regression (pass ~ weekday + month + hour + interactions)
 #(pass ~   month  + interactions)
-lm1 <- lm(passenger_count ~ (pickup_zip + Hour  + Day_of_week + Month), data = Data)
+lm1 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month), data = Data)
 resids = lm1$residuals
 plot(resids)
 
-lm2 <- lm(passenger_count ~ (pickup_zip + Hour  + Day_of_week + Month)^2, data = Data)
+lm2 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month)^2, data = Data)
 resids2 = lm2$residuals
 plot(resids2, type = 'l')
+
+lm3 <- lm(passenger_count ~ (Hour  + Day_of_week + Month)^3, data = Data)
+resids3 = lm3$residuals
+plot(resids3, type = 'l')
 
 #Arima
   count_ma = ts(resids, frequency=3)
