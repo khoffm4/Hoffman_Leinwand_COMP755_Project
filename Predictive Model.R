@@ -1,6 +1,8 @@
 library('ggplot2')
 library('forecast')
 library('tseries')
+#https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials
+
 
 # ARIMA Model
 setwd("~/Documents/Github/Hoffman_Leinwand_COMP755_Project")
@@ -14,9 +16,9 @@ Passenger_Count <- as.numeric(Passenger_Count)
 
 
 
+
 n = length(Passenger_Count)
 
-n = 24*60
 #Toy Data
 Pass =  Passenger_Count[1:n]
 Pass = as.data.frame(Pass)
@@ -37,6 +39,10 @@ ggplot() +
   geom_line(data = Pass, aes(x = c(1:n) ,y = maday,colour = "Daily Moving Average")) + 
   geom_line(data = Pass, aes(x = c(1:n) ,y = maweek ,colour = "Weekly Moving Average")) +
   geom_line(data = Pass, aes(x = c(1:n) ,y = mamonth ,colour = "Monthly Moving Average"))
+
+#Regression (pass ~ weekday + month + hour + interactions)
+#(pass ~   month  + interactions)
+lm1 <- lm()
 
 #Arima
   count_ma = ts(na.omit(Pass$Pass), frequency=3)
@@ -73,7 +79,9 @@ ggplot() +
   Test =  Passenger_Count[c(n+1, n+2)]
   Test = as.data.frame(Test)
   
-  #Let's add features and do a VAR?
+  #Do a VAR on everythin
+  
+  
   
   
   
