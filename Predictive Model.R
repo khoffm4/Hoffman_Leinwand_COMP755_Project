@@ -27,9 +27,9 @@ Test = as.data.frame(Test)
 PUL_list = unique(Data$PULocationID)
 
 #Choose a zip code
-for (i in length(unique(Data$PULocationID))){
+for (i in c(1:length(unique(Data$PULocationID)))){
   print(i)
-  PULocationID =  as.integer(PUL_list[5])
+  PULocationID =  as.integer(PUL_list[i])
 
 
 
