@@ -8,10 +8,10 @@ library('tseries')
 
 # ARIMA Model
 setwd("~/Documents/Github/Hoffman_Leinwand_COMP755_Project")
-Data <-read.csv('Demand_Data2.csv')
+Data <-read.csv('Demand_Data2_2017.csv')
 
 #Convert those itegers as factors:
-Data$pickup_zip = as.factor(Data$pickup_zip)
+Data$PULocationID = as.factor(Data$PULocationID)
 Data$Hour = as.factor(Data$Hour)
 Data$Day = as.factor(Data$Day)
 Data$Day_of_week = as.factor(Data$Day_of_week)
@@ -19,15 +19,15 @@ Data$Month = as.factor(Data$Month)
 
 
 #Choose a zip code
-zip = 10007
-Passenger_Count <- subset(Data, pickup_zip == zip)
+PULocationID = 4
+Passenger_Count <- subset(Data, PULocationID == PULocationID)
 Passenger_Count <- Passenger_Count$passenger_count
 Passenger_Count <- as.numeric(Passenger_Count)
 
-  Zip_Data =  Data[ which(Data$pickup_zip == zip)]
+PULocationID =  Data[which(Data$PULocationID == PULocationID),]
 
 
-n = length(Passenger_Count)
+n = length(Passenger_Count) - 30
 #Toy Data
 Pass =  Passenger_Count[1:n]
 Pass = as.data.frame(Pass)

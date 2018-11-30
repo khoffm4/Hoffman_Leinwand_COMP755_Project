@@ -2,7 +2,7 @@ library(readr)
 demand_data <- read_csv("UNC/Classes 2018 Fall/COMP 755 -Machine Learning/Project/Demand_Data2.csv")
 demand_data <- read_csv("/Users/kentarohoffman/Documents/Github/Hoffman_Leinwand_COMP755_Project/Demand_Data2_2017.csv")
 
-demand_data <- read_csv("/Users/kentarohoffman/Documents/Github/Hoffman_Leinwand_COMP755_Project/Demand_Data2_2017.csv")
+demand_data <- read.csv("/Users/kentarohoffman/Documents/Github/Hoffman_Leinwand_COMP755_Project/Demand_Data2_2017.csv")
 
 
 #Put June as the test set, all previous months as training set
