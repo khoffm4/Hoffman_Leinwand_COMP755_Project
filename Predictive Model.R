@@ -4,15 +4,14 @@ library('tseries')
 #https://www.datascience.com/blog/introduction-to-forecasting-with-arima-in-r-learn-data-science-tutorials
 
 
-
-
 # ARIMA Model
 setwd("~/Documents/Github/Hoffman_Leinwand_COMP755_Project")
-<<<<<<< HEAD
-=======
-setwd("~/Github/Hoffman_Leinwand_COMP755_Project")
->>>>>>> 2017_Version
-Data <-read.csv('Demand_Data2_2017.csv')
+#setwd("~/Github/Hoffman_Leinwand_COMP755_Project")
+
+
+
+Data <-read.csv('Demand_Data3_Train_CV_2017.csv')
+Test_Data <- read.csv('Demand_Data3_Test_Predictions_2017.csv')
 
 #Convert those itegers as factors:
 Data$PULocationID = as.factor(Data$PULocationID)
@@ -21,16 +20,23 @@ Data$Day = as.factor(Data$Day)
 Data$Day_of_week = as.factor(Data$Day_of_week)
 Data$Month = as.factor(Data$Month)
 
+#And for testing Data
+Test_Data$PULocationID = as.factor(Test_Data$PULocationID)
+Test_Data$Hour = as.factor(Test_Data$Hour)
+Test_Data$Day = as.factor(Test_Data$Day)
+Test_Data$Day_of_week = as.factor(Test_Data$Day_of_week)
+Test_Data$Month = as.factor(Test_Data$Month)
+
 #Make Train and Test Data
-Train = Data[Data$Month ==c(1:10),]
-Test = Data[Data$Month == c(11,12),]
+Train = Data
+Test = Test_Data
 Train = as.data.frame(Train)
 Test = as.data.frame(Test)
 
 PUL_list = unique(Data$PULocationID)
 
 #Choose a zip code
-<<<<<<< HEAD
+
 PULocationID = 4
 Passenger_Count <- subset(Data, PULocationID == PULocationID)
 Passenger_Count <- Passenger_Count$passenger_count
@@ -38,55 +44,55 @@ Passenger_Count <- as.numeric(Passenger_Count)
 
 PULocationID =  Data[which(Data$PULocationID == PULocationID),]
 
-=======
+
 for (i in c(1:length(unique(Data$PULocationID)))){
   print(i)
   PULocationID =  as.integer(PUL_list[i])
 
-
-
-Passenger_Count <- subset(Train, PULocationID == PULocationID)
-Passenger_Count <- Passenger_Count$passenger_count
-Passenger_Count <- as.numeric(Passenger_Count)
-
-Zip_Data =  Train[ which(Train$PULocationID == PULocationID),]
->>>>>>> 2017_Version
-
-n = length(Passenger_Count) - 30
-#Toy Data
-Pass =  Passenger_Count[1:n]
-Pass = as.data.frame(Pass)
-
-
-#Plot
-#ggplot() +
-#  geom_line(data = Pass, aes(x = c(1:n) ,y = Pass)) + ylab('Cleaned Bicycle Count')
-
-
-#Moving Average
-#Pass$maday = as.vector(ma(Pass$Pass, order=24)) # using the clean count with no outliers
-#Pass$maweek = as.vector(ma(Pass$Pass, order=24* 7)) # using the clean count with no outliers
-#Pass$mamonth = as.vector(ma(Pass$Pass, order=24* 30)) # using the clean count with no outliers
-
-#ggplot() +
-#  geom_line(data = Pass, aes(x = c(1:n) ,y = Pass, colour = "Ridership")) + 
-#  geom_line(data = Pass, aes(x = c(1:n) ,y = maday,colour = "Daily Moving Average")) + 
-#  geom_line(data = Pass, aes(x = c(1:n) ,y = maweek ,colour = "Weekly Moving Average")) +
-#  geom_line(data = Pass, aes(x = c(1:n) ,y = mamonth ,colour = "Monthly Moving Average"))
-
-#Regression (pass ~ weekday + month + hour + interactions)
-#(pass ~   month  + interactions)
-#lm1 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month), data = Data)
-#resids = lm1$residuals
-#plot(resids)
-
-lm2 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month), data = Train)
-resids = lm2$residuals
-#plot(resids2, type = 'l')
-
-#lm3 <- lm(passenger_count ~ (Hour  + Day_of_week + Month)^3, data = Data)
-#resids3 = lm3$residuals
-#plot(resids3, type = 'l')
+  
+  
+  Passenger_Count <- subset(Train, PULocationID == PULocationID)
+  Passenger_Count <- Passenger_Count$passenger_count
+  Passenger_Count <- as.numeric(Passenger_Count)
+  
+  Zip_Data =  Train[ which(Train$PULocationID == PULocationID),]
+  
+  
+  n = length(Passenger_Count) - 30
+  #Toy Data
+  Pass =  Passenger_Count[1:n]
+  Pass = as.data.frame(Pass)
+  
+  
+  #Plot
+  #ggplot() +
+  #  geom_line(data = Pass, aes(x = c(1:n) ,y = Pass)) + ylab('Cleaned Bicycle Count')
+  
+  
+  #Moving Average
+  #Pass$maday = as.vector(ma(Pass$Pass, order=24)) # using the clean count with no outliers
+  #Pass$maweek = as.vector(ma(Pass$Pass, order=24* 7)) # using the clean count with no outliers
+  #Pass$mamonth = as.vector(ma(Pass$Pass, order=24* 30)) # using the clean count with no outliers
+  
+  #ggplot() +
+  #  geom_line(data = Pass, aes(x = c(1:n) ,y = Pass, colour = "Ridership")) + 
+  #  geom_line(data = Pass, aes(x = c(1:n) ,y = maday,colour = "Daily Moving Average")) + 
+  #  geom_line(data = Pass, aes(x = c(1:n) ,y = maweek ,colour = "Weekly Moving Average")) +
+  #  geom_line(data = Pass, aes(x = c(1:n) ,y = mamonth ,colour = "Monthly Moving Average"))
+  
+  #Regression (pass ~ weekday + month + hour + interactions)
+  #(pass ~   month  + interactions)
+  #lm1 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month), data = Data)
+  #resids = lm1$residuals
+  #plot(resids)
+  
+  lm2 <- lm(passenger_count ~ ( Hour  + Day_of_week + Month), data = Train)
+  resids = lm2$residuals
+  #plot(resids2, type = 'l')
+  
+  #lm3 <- lm(passenger_count ~ (Hour  + Day_of_week + Month)^3, data = Data)
+  #resids3 = lm3$residuals
+  #plot(resids3, type = 'l')
 
 #Arima
   count_ma = ts(resids, frequency=3)
@@ -117,11 +123,12 @@ resids = lm2$residuals
   
   
   #Forcast
-  fcast <- forecast(fit, h=24)
+  fcast <- forecast(fit1, h=24)
   #plot(fcast)
   predict(fcast)
   
-  #How good is the forcast?s
+  
+#How good is the forcast?s
   
   
   #Do a VAR on everythin
