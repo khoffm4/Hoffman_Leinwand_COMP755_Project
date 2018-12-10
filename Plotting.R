@@ -13,6 +13,7 @@ setwd("~/Documents/Github2/Hoffman_Leinwand_COMP755_Project")
 #Data <-read.csv('Demand_Data3_Train_CV_2017.csv')
  
 
+OData <- read.csv('Demand_Data3_Total_CV_2017_with_zeros.csv')
 OData4 = OData[OData$PULocationID ==  4,]
 
 plot(OData4$passenger_count[1:7000], type = 'l', main = 'Ridership in Zone 4 Over the Year without Preprocessing', xlab = 'Time Block', ylab= 'Number of Pickups from taxis')

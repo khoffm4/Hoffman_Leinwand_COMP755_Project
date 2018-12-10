@@ -78,7 +78,7 @@ for (i in c(1:length(PUL_list))) {
   
   #Arima
   Train_resids_ts = ts(Train_resids)
-  assign(paste0("fit", 1), auto.arima(Train_resids_ts, seasonal=TRUE))
+  assign(paste0("fit", i), auto.arima(Train_resids_ts, seasonal=TRUE))
   
   Test_resids_ts = ts(Test_resids, start = length(Train_resids_ts) + 1)
   Test2_resids_ts = ts(Test2_resids, start = length(Train_resids_ts) +length(Test_resids_ts) + 1)
@@ -97,8 +97,11 @@ for (i in c(1:length(PUL_list))) {
   
   #Training Data Plot
   len  = 300
-  plot(((Train_resids) +Train$OLS_fitted_value )[0:len], type ='l')
+  plot(((Train_resids) +Train$OLS_fitted_value )[0:len], type ='l', main ='Ridership in Zone 4 and its ARIMA prediction', xlab = "Time", ylab = 'Ridership')
   lines(window( (fitted(All_resids_model ) + Data$OLS_fitted_value)[0:len], start =1), col = 'red')
+  
+  plot(((Train_resids) +Train$OLS_fitted_value ), type ='l', main ='Ridership in Zone 4 and its ARIMA prediction', xlab = "Time", ylab = 'Ridership')
+  lines(window( (fitted(All_resids_model ) + Data$OLS_fitted_value), start =1), col = 'red')
   
   
   #Test2 Data Plot
