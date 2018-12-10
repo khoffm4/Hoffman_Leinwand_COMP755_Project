@@ -1,1 +1,2 @@
-Hoffman_Leinwand_COMP755_Project
+For our submission open the file:
+Comp755_f18_Final_Project_Kentaro_Benjy.ipynb
