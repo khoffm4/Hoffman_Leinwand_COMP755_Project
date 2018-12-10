@@ -6,7 +6,7 @@ library('tseries')
 
 
 # ARIMA Model
-setwd("~/Documents/Github/Hoffman_Leinwand_COMP755_Project")
+setwd("~/Documents/Github2/Hoffman_Leinwand_COMP755_Project")
 #setwd("~/Github/Hoffman_Leinwand_COMP755_Project")
 
 

@@ -5,7 +5,7 @@ library('tseries')
 
 
 # ARIMA Model
-setwd("~/Documents/Github/Hoffman_Leinwand_COMP755_Project")
+setwd("~/Documents/Github2/Hoffman_Leinwand_COMP755_Project")
 #setwd("~/Github/Hoffman_Leinwand_COMP755_Project")
 
 
@@ -28,6 +28,8 @@ OTest = OData[OData$Month %in% c(10),]
 OTest2 = OData[OData$Month %in% c(11,12),]
 OTrain = OData[OData$Month %in% c(1:9),]
 #Test2 IS ACUTALLY THE TEST SET OK 
+
+
 
 
 RMSE_list = rep(NA, length(unique(OData$PULocationID)))
