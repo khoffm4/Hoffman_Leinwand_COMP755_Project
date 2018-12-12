@@ -6,7 +6,8 @@ The report is in Combining Train and Test set with predictions for neighbors dat
 Description of Files:
 
 *Adjacency_2017.csv – Our updated adjacency matrix
-Adding Zero Hours to groupby.ipynb – adds any locations/time combinations where there were no trips to the datasets, recording all pertinent information as zeros
+
+*Adding Zero Hours to groupby.ipynb – adds any locations/time combinations where there were no trips to the datasets, recording all pertinent information as zeros
 
 *Demand_Data3_Total_CV_2017_with_zeros.csv - Data for Demand in each Pickup Zone within lower Manhatten. The data is from 2017 and the "with_zeros" means that if a time was missing from the dataset, then we have declared that noone was picked up at the time. Also contains the fit from the linear regression preprocessing.
 
