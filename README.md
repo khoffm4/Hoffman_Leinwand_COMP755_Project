@@ -7,13 +7,19 @@ Description of Files:
 
 *Adjacency_2017.csv – Our updated adjacency matrix
 
+######################################################################
+Comp755_f18_Final_Project_Kentaro_Benjy.ipynb is the final report
+######################################################################
+
+Other useful files:
+
 *Adding Zero Hours to groupby.ipynb – adds any locations/time combinations where there were no trips to the datasets, recording all pertinent information as zeros
 
 *Demand_Data3_Total_CV_2017_with_zeros.csv - Data for Demand in each Pickup Zone within lower Manhatten. The data is from 2017 and the "with_zeros" means that if a time was missing from the dataset, then we have declared that noone was picked up at the time. Also contains the fit from the linear regression preprocessing.
 
 *neighbors_2017_combined_train_and_test_with_predictions_fixed_with_zeros.csv - Data for Trip Duration to each neighboring Pickupzone in 2017 with zeros imputed like above. Also contains data from the poisson regression preprocessing
 
-*Combining Train and Test set with predictions for neighbors data.ipynb - The report.
+*Combining Train and Test set with predictions for neighbors data.ipynb - Wangling data
 
 *Demand_and_Time_Matrix_Creator.ipynb- Takes in the LSTMS for each zone and outputs a Demand and Time matrix.
 
